@@ -12,7 +12,7 @@
 			<?if($this->child){?>
 				<?$this->child->put_view()?>
 			<?}else{?>
-				<?$this['_prepare']->put_view()?>
+				<?$this[$_SESSION['current_install_step']]->put_view()?>
 			<?}?>
 		</div>
 	</div>

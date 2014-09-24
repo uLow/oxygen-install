@@ -53,6 +53,9 @@
 			foreach($parts as $k=>$part){
 				$curCreatedPath .= '/'.$part;
 				if(!file_exists($curCreatedPath)){
+					if(!isset($_SESSION['connectivity']['first_created_dir'])){
+						$_SESSION['connectivity']['first_created_dir'] = $curCreatedPath;
+					}
 					mkdir($curCreatedPath);
 				}
 			}
@@ -72,25 +75,14 @@
 					//}
 				}
 			}
+
+			$_SESSION['current_install_step'] = '_connectivity';
 		}
 
 		public function cancelApplication(){
-			$curDir = getcwd();
-
-			$className = $this->className;
-
-			$path = $this->scope->loader->pathFor($className, false, false);
-
-			$pathToCreate = str_replace($curDir.'/', '', $path);
-
-			$curCreatedPath = $curDir;
-
-			$parts = explode('/', $pathToCreate);
-			$filename = $parts[count($parts)-1];
-			unset($parts[count($parts)-1]);
-
-			$this->rrmdir(implode('/', $parts));
-			var_dump($curDir);
+			if(isset($_SESSION['connectivity']['first_created_dir'])){
+				$this->rrmdir($_SESSION['connectivity']['first_created_dir']);
+			}
 		}
 
 		public function rrmdir($dir){
@@ -112,6 +104,7 @@
 		public function rpc_finish($args){
 			$curDir = getcwd();
 			file_put_contents($curDir.'/index.php', $this->get_index_file());
+			$_SESSION['current_install_step'] = '_prepare';
 		}
 
 		public function validate(){
@@ -143,6 +136,7 @@
 
 		public function rpc_back($args){
 			$this->cancelApplication();
+			$_SESSION['current_install_step'] = '_prepare';
 			return $this->scope->APP['_prepare']->embed_view();
 		}
 	}

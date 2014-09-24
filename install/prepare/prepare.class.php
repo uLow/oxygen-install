@@ -35,6 +35,8 @@
 				'app' => $args->app,
 				'databases' => $args->databases
 			);
+			
+			unset($_SESSION['connectivity']['first_created_dir']);
 			return $this->scope->APP['_connectivity']->embed_view();
 		}
 	}

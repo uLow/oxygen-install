@@ -30,7 +30,8 @@ $this.find('.continue').live('click', function(){
 		},
 		function(err, res){
 			$('[role="main"]').embed(res, true);
-			$('.navigation').refresh();
+			$('.navigation').find('.verification').removeClass('disabled');
+			$('.navigation').find('.verification').addClass('active');
 		}
 	);
 });

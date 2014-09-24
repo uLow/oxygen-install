@@ -4,6 +4,9 @@ $this.find('.back').live('click', function(){
 		{},
 		function(err, res){
 			$('[role="main"]').embed(res, true);
+
+			$('.navigation').find('.verification').removeClass('active');
+			$('.navigation').find('.verification').addClass('disabled');
 		}
 	);
 });
@@ -19,7 +22,9 @@ $this.find('.finish').live('click', function(){
 		function(err, res){
 			setTimeout(function(){
 				location.reload(true);
-			}, 1000);
+			}, 2000);
+			
+			$('.navigation').find('.ready').addClass('active');
 		}
 	);
 });

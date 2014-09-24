@@ -1,6 +1,4 @@
 <?
-set_time_limit(0);
-
 $debug = false;
 
 try{
@@ -12,7 +10,7 @@ try{
     $scope = include 'oxygen/itself.php'; 
     session_start();
     $scope->strictMode();
-    handleHttpRequest($scope,'Install', false, $debug);
+    handleHttpRequest($scope, 'Install', false, $debug);
 }catch(Exception $e){
 	echo $e->getMessage();
 }

@@ -1,14 +1,7 @@
 <?o('div.col-md-2.navigation')?>
-	<h3 class="header">Navigation</h3>
+	<h3 class="header">Installation steps</h3>
 	<ul class="nav">
-		<?$disabled = false?>
-		<?foreach($this as $child){?>
-			<li class="<?if($disabled === true){?>disabled<?}?>"><a href="javascript:void(0)"><?=$child?></a></li>
-
-			<?if(!$this->child || $this->child->route == $child->route){?>
-				<?$disabled = true?>
-			<?}?>
-		<?}?>
-		<li class="disabled"><a href="javascript:void(0)">Delete installation files</a></li>
-		<li class="disabled"><a href="javascript:void(0)">Ready to breathe</a></li>
+		<li class="active prepare"><a href="javascript:void(0)">Prepare</a></li>
+		<li class="<?=($_SESSION['current_install_step'] == '_connectivity')?'active':'disabled'?> verification"><a href="javascript:void(0)">Verification</a></li>
+		<li class="disabled ready"><a href="javascript:void(0)">Ready to breathe</a></li>
 	</ul>

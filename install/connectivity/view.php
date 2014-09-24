@@ -77,7 +77,14 @@
 	<div class="row">
 		<div class="col-md-12">
 			<p>
-				Your installation is almost done. You can verify created files and finish, or go back and edit any data and then proceed.
+				Your installation is almost done. You can verify created files and finish, or go back and edit any data and then proceed. 
+			</p>
+			<p>
+				After you press "finish" button, there will be replaced current <code>index.php</code> file with your application's one. <br>
+				Page will refresh after 2 seconds (if <code>index.php</code> replacement will take longer, refresh page by yourself).
+			</p>
+			<p>
+				If you decide to return it back to install mode, copy contents of <code>/install/install.php</code> to <code>index.php</code> and delete generated application folder.
 			</p>
 		</div>
 	</div>

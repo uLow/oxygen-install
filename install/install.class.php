@@ -15,6 +15,9 @@
         }
 
         public function __complete() {
+            if(!isset($_SESSION['current_install_step'])){
+                $_SESSION['current_install_step'] = '_prepare';
+            }
             $this->init();
             $this->company = 'Oxygen Install';
         }
