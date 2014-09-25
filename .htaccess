@@ -16,3 +16,19 @@ Deny from all
 RewriteEngine On
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^(.*)$ index.php [L]
+
+## nginx configuration
+#location / {
+#if (!-e $request_filename){
+#rewrite ^(.*)$ /index.php break;
+#}
+#}
+#location ~ ^\.yml {
+#deny all;
+#}
+#location ~ *.php {
+#deny all;
+#}
+#location /index.php {
+#allow all;
+#}
