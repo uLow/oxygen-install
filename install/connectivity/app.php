@@ -47,7 +47,11 @@
         }
 
         public function configure($x) {
-            $x['scheme-generator']->Oxygen_SchemeGenerator(get_class($this));
+<?if(isset($_SESSION['connectivity']['configs']) && count($_SESSION['connectivity']['configs']) > 0){?>
+            if($this->auth->hasRole(array("admin"))){
+                $x['scheme-generator']->Oxygen_SchemeGenerator(get_class($this));
+            }
+<?}?>
             $x['{x:any}']->Oxygen_Common_LogonPage('login');
         }
 
